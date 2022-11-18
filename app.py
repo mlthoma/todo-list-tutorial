@@ -14,19 +14,20 @@ def create_todo():
     if request.method == "POST":
         global todo_list
         global todo_count
-
+        
         title: str = request.form['title']
         description: str = request.form['description']
+        color: str = request.form['color']
 
         if title == '':
             return render_template("create-todo.html")
 
-        new_todo: todo = todo(todo_count, title, description)
+        new_todo: todo = todo(todo_count, title, description, color)
         todo_list.append(new_todo)
 
         todo_count += 1
 
-        return render_template("success.html", title=title, description=description)
+        return render_template("success.html", , title=title, description=description)
     return render_template("create-todo.html")
 
 @app.route('/view-todo-list')
